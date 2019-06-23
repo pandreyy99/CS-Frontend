@@ -3,7 +3,7 @@
     <b-container class="bv-example-row">
       <b-row v-for="i in rows">
         <b-col v-for="j in 4">
-          <div v-if="(i-1) * 4 + j <= 8" class="card mb-1 mt-1">
+          <div v-if="(i-1) * 4 + j <= 8" class="card active mb-1 mt-1" >
             <div class="product">
               <h6 class="product text-center mb-2 mt-2">{{items[(i - 1)*4 + j - 1].name}}</h6>
             </div>
@@ -12,7 +12,7 @@
               <h6 class="price text-center mb-2 mt-2">&dollar;{{items[(i - 1)*4 + j - 1].price}}</h6>
             </div>
           </div>
-          <div v-else class="card hidden mb-2 mt-2">
+          <div v-else class="card hidden mb-1 mt-1">
             <div class="product">
               <h6 class="product text-center mb-2 mt-2">{{items[(i - 1)*4 + j - 1].name}}</h6>
             </div>
@@ -24,9 +24,9 @@
         </b-col>
       </b-row>
       
-      <b-row class="hidden">
+      <b-row>
         <b-col v-for="j in cols">
-          <div class="card mb-1 mt-1">
+          <div class="card hidden mb-1 mt-1">
             <div class="product">
               <h6 class="product text-center mb-2 mt-2">{{items[items.length - j - 1].name}}</h6>
             </div>
@@ -53,11 +53,14 @@ $(document).ready(function () {
   $('#button').click(function (event) {
     event.preventDefault()
     let hiddenElements = $('.hidden')
+    console.log(hiddenElements.length)
     const numberOfElementsToAppear = Math.min(8, hiddenElements.length)
     for (let i = 0; i < numberOfElementsToAppear; i++) {
       hiddenElements[i].classList.remove('hidden')
+      hiddenElements[i].classList.add('active')
       hiddenElements[i].style.display = 'block'
     }
+    $('span')[0].innerHTML = $('.active').length
   })
 })
 
