@@ -8,6 +8,9 @@
 # install dependencies
 npm install
 
+# add axios manually 
+npm i axios 
+
 # serve with hot reload at localhost:8080
 npm run dev
 
