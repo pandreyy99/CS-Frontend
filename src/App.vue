@@ -3,7 +3,7 @@
     <header>
        <div id="container" class="shadow p-3 bg-white rounded">
           <h5 id="name"><b>MYStore</b></h5>
-          <h5 id="counter">Currently showing <span style="display:inline; color:red;">{{data.length}}</span> products</h5>
+          <h5 id="counter">Currently showing <span style="display:inline; color:red;">{{Math.min(numberOfPictures, data.length)}}</span> products</h5>
         </div>
     </header>
     <main>
@@ -17,8 +17,8 @@
 
 <script>
 import axios from 'axios'
-import JQuery from 'jquery'
-let $ = JQuery
+// import JQuery from 'jquery'
+// let $ = JQuery
 export default {
   name: 'app',
   data () {
@@ -61,12 +61,6 @@ export default {
     //     console.log(JSON.stringify(error))
     //   }
     // })
-  },
-  methods: {
-    changeItemsNumber: function () {
-      const number = $('img').length
-      this.numberOfPictures = number
-    }
   }
 }
 </script>
